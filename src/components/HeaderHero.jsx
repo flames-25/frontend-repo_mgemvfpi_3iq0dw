@@ -5,9 +5,9 @@ export default function HeaderHero() {
   return (
     <header className="relative w-full">
       {/* Spline scene as animated background */}
-      <div className="relative h-[520px] w-full overflow-hidden">
-        <Spline scene="https://prod.spline.design/G0i6ZIv4Vd1oW14L/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-        {/* Soft gradient veil to increase contrast over dark scene; does not block interaction */}
+      <div className="relative h-[560px] w-full overflow-hidden">
+        <Spline scene="https://prod.spline.design/LU2mWMPbF3Qi1Qxh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        {/* Soft gradient veil to increase contrast over colorful scene; does not block interaction */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/60" />
         {/* Content overlay */}
         <div className="absolute inset-0 flex items-center">
@@ -18,11 +18,11 @@ export default function HeaderHero() {
                 Simple, transparent pricing
               </span>
               <h1 className="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight text-white">
-                Pricing for 8 applications
-                <span className="block text-white/90 font-semibold md:font-extrabold">with deep module coverage</span>
+                An interconnected ecosystem
+                <span className="block text-white/90 font-semibold md:font-extrabold">where data flows across every application</span>
               </h1>
               <p className="mt-4 max-w-2xl text-base md:text-lg text-white/80">
-                Showcase every module and sub-feature across all your apps. Pick a plan now and scale without limits.
+                CRM, HRMS, Financial Accounting, Operations, Supply Chain and more — unified by seamless data movement.
               </p>
             </div>
           </div>
