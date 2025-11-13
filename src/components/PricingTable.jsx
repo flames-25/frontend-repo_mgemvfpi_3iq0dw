@@ -1,6 +1,8 @@
 import { Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Section3D from './Section3D';
 
-// Pricing designed to map to many modules across 8 applications
+// Pricing designed to map to many modules across 8 applications with 3D accents
 const plans = [
   {
     name: 'Starter',
@@ -54,16 +56,23 @@ const plans = [
 
 export default function PricingTable() {
   return (
-    <section className="relative py-12 md:py-16">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-indigo-50/40 to-white" />
-      <div className="mx-auto max-w-7xl px-6">
+    <Section3D height="auto" overlay="from-white via-white/85 to-white">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
         <div className="mb-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Plans for every rollout</h2>
-          <p className="mt-2 text-gray-600">Monthly or annual (2 months free). Switch anytime.</p>
+          <p className="mt-2 text-gray-700">Monthly or annual (2 months free). Switch anytime.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
-          {plans.map((plan) => (
-            <div key={plan.name} className={`relative rounded-2xl border ${plan.highlighted ? 'border-indigo-300 ring-2 ring-indigo-200' : 'border-gray-200'} bg-white p-6 shadow-sm`}>
+          {plans.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              className={`relative rounded-2xl border ${plan.highlighted ? 'border-indigo-300 ring-2 ring-indigo-200' : 'border-white/50'} bg-white/80 backdrop-blur p-6 shadow-sm [transform-style:preserve-3d]`}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              whileHover={{ rotateX: 4, rotateY: -4, z: 24, scale: 1.01 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 20 }}
+            >
               {plan.highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium text-white shadow">Most popular</div>
               )}
@@ -87,14 +96,15 @@ export default function PricingTable() {
                   </li>
                 ))}
               </ul>
-              <button className={`mt-6 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition ${plan.highlighted ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-gray-900 text-white hover:bg-black'}`}>
+              <button className={`${plan.highlighted ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-gray-900 text-white hover:bg-black'} mt-6 w-full rounded-xl px-4 py-2.5 text-sm font-semibold transition`}>
                 {plan.cta}
               </button>
-            </div>
+              <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-cyan-500/0 to-fuchsia-500/0 group-hover:from-indigo-500/10 group-hover:via-cyan-500/10 group-hover:to-fuchsia-500/10" />
+            </motion.div>
           ))}
         </div>
         <p className="mt-6 text-center text-xs text-gray-500">Prices in USD. Taxes may apply.</p>
       </div>
-    </section>
+    </Section3D>
   );
 }

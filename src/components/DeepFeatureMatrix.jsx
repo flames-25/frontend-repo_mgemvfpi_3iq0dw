@@ -1,4 +1,7 @@
-// Deep feature matrix tailored to many modules across applications
+import { motion } from 'framer-motion';
+import Section3D from './Section3D';
+
+// Deep feature matrix tailored to many modules across applications, with 3D accents
 const groups = [
   {
     module: 'Core Platform',
@@ -36,15 +39,24 @@ const groups = [
 
 export default function DeepFeatureMatrix() {
   return (
-    <section className="relative py-10 md:py-16">
-      <div className="mx-auto max-w-7xl px-6">
+    <Section3D height="auto" overlay="from-white via-white/85 to-white">
+      <div className="mx-auto max-w-7xl px-6 py-10 md:py-16">
         <div className="mb-6 md:mb-10">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">Modules & Sub-features</h2>
-          <p className="mt-2 text-gray-600 max-w-2xl">A concise inventory of what your team can deliver across all applications.</p>
+          <p className="mt-2 text-gray-700 max-w-2xl">A concise inventory of what your team can deliver across all applications.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {groups.map((group) => (
-            <div key={group.module} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          {groups.map((group, gi) => (
+            <motion.div
+              key={group.module}
+              className="relative rounded-2xl border border-white/50 bg-white/80 backdrop-blur p-6 shadow-sm [transform-style:preserve-3d]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              whileHover={{ rotateX: 4, rotateY: -3, z: 24, scale: 1.01 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 20 }}
+            >
+              <div className="pointer-events-none absolute -inset-2 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-cyan-500/0 to-fuchsia-500/0 group-hover:from-indigo-500/10 group-hover:via-cyan-500/10 group-hover:to-fuchsia-500/10" />
               <h3 className="text-lg font-semibold text-gray-900">{group.module}</h3>
               <ul className="mt-4 space-y-3">
                 {group.items.map((it) => (
@@ -57,10 +69,10 @@ export default function DeepFeatureMatrix() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </Section3D>
   );
 }
