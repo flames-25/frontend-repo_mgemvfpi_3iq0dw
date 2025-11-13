@@ -43,4 +43,14 @@
     --tw-exit-translate-x: initial;
     --tw-exit-translate-y: initial;
   }
+
+  /* subtle float animation for 3D nodes */
+  @keyframes float {
+    0% { transform: translateY(0) translateZ(0); }
+    50% { transform: translateY(-6px) translateZ(8px); }
+    100% { transform: translateY(0) translateZ(0); }
+  }
+  .animate-float {
+    animation: float 4.8s ease-in-out infinite;
+  }
 }

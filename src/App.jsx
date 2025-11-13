@@ -1,4 +1,5 @@
 import HeaderHero from './components/HeaderHero';
+import Ecosystem3D from './components/Ecosystem3D';
 import ApplicationsOverview from './components/ApplicationsOverview';
 import DeepFeatureMatrix from './components/DeepFeatureMatrix';
 import PricingTable from './components/PricingTable';
@@ -7,6 +8,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <HeaderHero />
+      <Ecosystem3D />
       <ApplicationsOverview />
       <DeepFeatureMatrix />
       <PricingTable />
