@@ -1,4 +1,3 @@
-import Spline from '@splinetool/react-spline';
 import { Star, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Section3D from './Section3D';
@@ -43,12 +42,20 @@ export default function HeaderHero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
               >
-                <button className="rounded-xl bg-white text-gray-900 px-4 py-2.5 text-sm font-semibold shadow-md hover:shadow-lg transition [transform-style:preserve-3d] hover:rotateX-2 hover:-rotateY-2">
+                <motion.button
+                  whileHover={{ rotateX: -4, rotateY: 4, z: 24, scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                  className="rounded-xl bg-white text-gray-900 px-4 py-2.5 text-sm font-semibold shadow-md hover:shadow-lg transition [transform-style:preserve-3d]"
+                >
                   Start free
-                </button>
-                <button className="rounded-xl bg-indigo-600/90 text-white px-4 py-2.5 text-sm font-semibold shadow-md hover:bg-indigo-600 hover:shadow-lg transition [transform-style:preserve-3d] hover:-rotateX-2 hover:rotateY-2 inline-flex items-center gap-2">
+                </motion.button>
+                <motion.button
+                  whileHover={{ rotateX: 4, rotateY: -4, z: 24, scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 220, damping: 18 }}
+                  className="rounded-xl bg-indigo-600/90 text-white px-4 py-2.5 text-sm font-semibold shadow-md hover:bg-indigo-600 hover:shadow-lg transition [transform-style:preserve-3d] inline-flex items-center gap-2"
+                >
                   <Sparkles className="h-4 w-4" /> See it in action
-                </button>
+                </motion.button>
               </motion.div>
             </motion.div>
           </div>
